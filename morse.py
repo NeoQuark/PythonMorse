@@ -18,15 +18,20 @@ while True:
 			# A -> .-
 			for c in msg:
 				morse  += alphabet[c.lower()] + ' '
-			print(morse)
+			#print(morse)
+			code = ""
 			for c in morse:
+				code += c
+				sys.stdout.write("\r{}".format(code))
 				if c == str('.'):
-					duration = 0.2
-				elif c == str('_'):
-					duration = 0.5
-				else:
 					time.sleep(0.5)
+					duration = 0.5
+				elif c == str('_'):
+					time.sleep(1)
+					duration = 1
+				else:
 					continue
+			print("\n")
 				# os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (duration, freq))
 		except KeyError:
 			# .- -> A
